@@ -181,13 +181,8 @@ func (hd *Handlers) setHandlers() {
 		Methods(http.MethodOptions, "GET")
 	hd.setHandler(HandlerPathDocuments, hd.handleDocuments, true).
 		Methods(http.MethodOptions, "GET")
-		/*
-			hd.setHandler(HandlerPathBSDocument, hd.handleBSDocument, true).
-				Methods(http.MethodOptions, "GET")
-		*/
 	hd.setHandler(HandlerPathDocument, hd.handleDocument, true).
 		Methods(http.MethodOptions, "GET")
-
 	hd.setHandler(HandlerPathManifests, hd.handleManifests, true).
 		Methods(http.MethodOptions, "GET")
 	hd.setHandler(HandlerPathOperations, hd.handleOperations, true).

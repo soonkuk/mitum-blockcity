@@ -99,27 +99,6 @@ func (bs *BlockSession) Commit(ctx context.Context) error {
 		return err
 	}
 
-	/*
-		if len(bs.bsDocumentModels) > 0 {
-
-			for i := range bs.bsDocumentList {
-				if err := bs.st.cleanByHeightColNameDocumentId(bs.block.Height(), defaultColNameBSDocument, bs.bsDocumentList[i].String()); err != nil {
-					return err
-				}
-			}
-
-			if err := bs.writeModels(ctx, defaultColNameBSDocument, bs.bsDocumentModels); err != nil {
-				return err
-			}
-		}
-
-		if len(bs.bsDocumentsModels) > 0 {
-			if err := bs.writeModels(ctx, defaultColNameBSDocuments, bs.bsDocumentsModels); err != nil {
-				return err
-			}
-		}
-	*/
-
 	if len(bs.documentModels) > 0 {
 
 		for i := range bs.documentList {
@@ -255,15 +234,6 @@ func (bs *BlockSession) prepareAccounts() error {
 	bs.accountModels = accountModels
 	bs.balanceModels = balanceModels
 
-	/*
-		if len(bsDocumentModels) > 0 {
-			bs.bsDocumentModels = bsDocumentModels
-		}
-
-		if len(bsDocumentsModels) > 0 {
-			bs.bsDocumentsModels = bsDocumentsModels
-		}
-	*/
 	if len(documentModels) > 0 {
 		bs.documentModels = documentModels
 	}
@@ -365,8 +335,6 @@ func (bs *BlockSession) close() error {
 	bs.balanceModels = nil
 	bs.documentModels = nil
 	bs.documentsModels = nil
-	// bs.bsDocumentModels = nil
-	// bs.bsDocumentsModels = nil
 
 	return bs.st.Close()
 }
